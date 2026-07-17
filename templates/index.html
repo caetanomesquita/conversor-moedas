@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Moedas</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="card">
+    <h1 class="card__title">Conversor de Moedas</h1>
+
+    <form id="form-conversor">
+      <div class="grupo">
+        <label for="de">De</label>
+        <div class="linha-moeda">
+          <input type="text" id="valor" placeholder="Digite o valor" value="100">
+          <select id="de">
+            <option value="BRL">🇧🇷 BRL</option>
+            <option value="USD">🇺🇸 USD</option>
+            <option value="EUR">🇪🇺 EUR</option>
+            <option value="GBP">🇬🇧 GBP</option>
+            <option value="JPY">🇯🇵 JPY</option>
+            <option value="CAD">🇨🇦 CAD</option>
+            <option value="AUD">🇦🇺 AUD</option>
+            <option value="CHF">🇨🇭 CHF</option>
+            <option value="CNY">🇨🇳 CNY</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="button" id="botao-inverter" aria-label="Inverter moedas">↑↓</button>
+
+      <div class="grupo">
+        <label for="para">Para</label>
+        <select id="para" class="select-cheio">
+          <option value="USD">🇺🇸 USD</option>
+          <option value="BRL">🇧🇷 BRL</option>
+          <option value="EUR">🇪🇺 EUR</option>
+          <option value="GBP">🇬🇧 GBP</option>
+          <option value="JPY">🇯🇵 JPY</option>
+          <option value="CAD">🇨🇦 CAD</option>
+          <option value="AUD">🇦🇺 AUD</option>
+          <option value="CHF">🇨🇭 CHF</option>
+          <option value="CNY">🇨🇳 CNY</option>
+        </select>
+      </div>
+
+      <button type="submit" id="botao-converter" class="botao-principal">Converter</button>
+    </form>
+
+    <div class="resultado-box">
+      <span class="resultado-label">Resultado</span>
+      <h2 id="resultado">—</h2>
+    </div>
+
+    <p class="rodape">🟢 Cotação obtida em tempo real via API</p>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
