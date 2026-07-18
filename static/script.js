@@ -38,4 +38,5 @@ form.addEventListener("keydown", function (evento) {
 
 form.addEventListener("submit", function (evento) {
   evento.preventDefault();
+  converter();
 });
