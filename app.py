@@ -15,18 +15,21 @@ def api_convert():
     valor = request.args.get("valor")
 
     try:
-        url = f"https://api.frankfurter.app/latest?amount={valor}&from={origem}&to={destino}"
-        resposta = requests.get(url)
+        valor_float = float(valor)
+
+        url = f"https://api.frankfurter.dev/v2/rate/{origem}/{destino}"
+        resposta = requests.get(url, timeout=8)
         dados = resposta.json()
 
-        cotacao = dados["rates"][destino]
-        return jsonify({"resultado": cotacao})
+        taxa = dados["rate"]
+        resultado = round(valor_float * taxa, 4)
+
+        return jsonify({"resultado": resultado})
 
     except KeyError:
         return jsonify({"erro": f"Não foi possível converter para {destino}. Essa moeda pode não ser suportada."}), 400
     except Exception:
         return jsonify({"erro": "Algo deu errado ao buscar a cotação. Tente novamente."}), 500
-
 
 if __name__ == "__main__":
     app.run(debug=True)

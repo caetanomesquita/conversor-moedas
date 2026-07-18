@@ -7,7 +7,7 @@ moeda_destino = input("Para qual moeda? (ex: BRL): ")
 valor = input("Qual valor? (ex: 100): ")
 
 # monta a URL "colando" as variáveis dentro do texto
-url = f"https://api.frankfurter.app/latest?amount={valor}&from={moeda_origem}&to={moeda_destino}"
+url = f"https://api.frankfurter.dev/v2/rate/USD/BRL"
 
 resposta = requests.get(url)
 dados = resposta.json()
